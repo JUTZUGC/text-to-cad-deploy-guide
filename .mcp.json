@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "texttocad-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
