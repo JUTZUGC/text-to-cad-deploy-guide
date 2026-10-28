@@ -8,7 +8,7 @@
     "oneLiner": "文字生成 3D 模型与制造检查的 Agent 插件",
     "officialRepo": "https://github.com/earthtojake/text-to-cad",
     "officialDocs": "https://github.com/earthtojake/text-to-cad#-install",
-    "stars": "23.3k",
+    "stars": "23.7k",
     "license": "MIT",
     "highlights": [
       "输出：STEP / GLB / STL / 3MF",
@@ -20,11 +20,11 @@
     "mcpSupport": "text-to-cad 的核心就是 `cadgen mcp` 这个本地 MCP server；百度搭子可直接注册。本仓库的 MCP 只提供安装与常见坑。",
     "webuiUrl": "",
     "adapterPorts": "",
-    "collectedAt": "2026-10-26",
+    "collectedAt": "2026-10-28",
     "verification": [
       [
-        "PyPI 包 cadgen 最新版 0.7.26、requires_python >=3.11 已核对",
-        "已验证 2026-10-26"
+        "PyPI 包 cadgen 最新版 0.8.1 已核对",
+        "已核对 2026-10-28"
       ],
       [
         "本机未安装 uv，未实际运行 cadgen",
@@ -44,23 +44,23 @@
       "steps": [
         "command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh",
         "export PATH=\"$HOME/.local/bin:$PATH\"",
-        "uvx --from cadgen==0.7.26 cadgen --version",
-        "echo \"安装完成：在百度搭子里注册 MCP，command 用 uvx --from cadgen==0.7.26 cadgen mcp\""
+        "uvx --from cadgen==0.8.1 cadgen --version",
+        "echo \"安装完成：在百度搭子里注册 MCP，command 用 uvx --from cadgen==0.8.1 cadgen mcp\""
       ],
       "stepsPs": [
         "if (-not (Get-Command uv -ErrorAction SilentlyContinue)) { powershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\" }",
-        "$env:Path = \"$env:USERPROFILE\\.local\\bin;$env:Path\" ; uvx --from cadgen==0.7.26 cadgen --version",
-        "Write-Host '安装完成：在百度搭子里注册 MCP（type=local，command=uvx --from cadgen==0.7.26 cadgen mcp）'"
+        "$env:Path = \"$env:USERPROFILE\\.local\\bin;$env:Path\" ; uvx --from cadgen==0.8.1 cadgen --version",
+        "Write-Host '安装完成：在百度搭子里注册 MCP（type=local，command=uvx --from cadgen==0.8.1 cadgen mcp）'"
       ],
       "source": "https://github.com/earthtojake/text-to-cad#-install"
     },
     "pitfalls": [
       "`uv` 找不到：先装 uv，再重开终端让 PATH 生效",
-      "MCP 起不来：用 `uvx --from cadgen==0.7.26 cadgen mcp` 完整命令排查",
+      "MCP 起不来：用 `uvx --from cadgen==0.8.1 cadgen mcp` 完整命令排查",
       "首次很慢：要下载 CAD 运行时，不是卡死",
       "Windows OCP DLL 报错：安装 VC++ 运行库",
       "模型尺寸不对：描述里给明确单位与关键尺寸，别只说「大一点」",
-      "不想上报统计：`uvx --from cadgen==0.7.26 cadgen telemetry off`",
+      "不想上报统计：`uvx --from cadgen==0.8.1 cadgen telemetry off`",
       "别直接上机床：生成结果必须人工复核"
     ]
   },

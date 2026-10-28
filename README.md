@@ -1,7 +1,7 @@
 # text-to-cad 一键部署指南
 
 > 第三方部署指南 · 非 text-to-cad 官方仓库。官方项目：[earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad)
-> 内容来自官方文档（2026-10-26）。项目迭代快，请以[官方文档](https://github.com/earthtojake/text-to-cad#-install)为准。
+> 内容来自官方文档（2026-10-28）。项目迭代快，请以[官方文档](https://github.com/earthtojake/text-to-cad#-install)为准。
 
 [![⚡ 一键部署](https://img.shields.io/badge/%E2%9A%A1_%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2-%E6%8E%A8%E8%8D%90%E7%99%BE%E5%BA%A6%E6%90%AD%E5%AD%90-2ea44f?style=for-the-badge)](#一键部署推荐用百度搭子)
 
@@ -26,7 +26,7 @@
    回到刚打开的对话窗口，粘贴并发送上面那句。
 
 3. **跟着对话往下走**
-   百度搭子会先确保 uv 可用，再用 uvx 拉取 cadgen 0.7.26 并确认版本，然后提示 MCP 注册方式，按它的提示确认即可，结束时它会告诉你结果。
+   百度搭子会先确保 uv 可用，再用 uvx 拉取 cadgen 0.8.1 并确认版本，然后提示 MCP 注册方式，按它的提示确认即可，结束时它会告诉你结果。
    （需本机已装 Git；构建依赖以官方文档为准。）
 
 
@@ -49,7 +49,7 @@ text-to-cad 是开源的文字生成 3D 模型与制造检查的 Agent 插件（
 
 | 优点 | 说明 |
 |---|---|
-| 23.3k stars | 2026-04 建，月增约 6,800 |
+| 23.7k stars | 2026-04 建，月增约 6,800 |
 | 真能出模型 | STEP / GLB / STL / 3MF 都能导 |
 | 不只建模 | 带 DFM 检查、工程图与制造对接 |
 | 接入面广 | Claude Code、Codex、Cursor、Gemini、Grok、MCP |
@@ -63,15 +63,15 @@ text-to-cad 是开源的文字生成 3D 模型与制造检查的 Agent 插件（
 | 默认开统计 | 要手动关 |
 | Windows 有 DLL 坑 | OCP 依赖 VC++ 运行库 |
 
-> 以上基于官方文档与社区反馈整理（2026-10-26），以官方最新文档为准。
+> 以上基于官方文档与社区反馈整理（2026-10-28），以官方最新文档为准。
 
 ## 快速部署（官方方式）
 
 ```bash
 command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh
 export PATH="$HOME/.local/bin:$PATH"
-uvx --from cadgen==0.7.26 cadgen --version
-echo "安装完成：在百度搭子里注册 MCP，command 用 uvx --from cadgen==0.7.26 cadgen mcp"
+uvx --from cadgen==0.8.1 cadgen --version
+echo "安装完成：在百度搭子里注册 MCP，command 用 uvx --from cadgen==0.8.1 cadgen mcp"
 ```
 
 部署步骤来源：[https://github.com/earthtojake/text-to-cad#-install](https://github.com/earthtojake/text-to-cad#-install)
@@ -80,7 +80,7 @@ echo "安装完成：在百度搭子里注册 MCP，command 用 uvx --from cadge
 
 | 场景 | 状态 |
 |---|---|
-| PyPI 包 cadgen 最新版 0.7.26、requires_python >=3.11 已核对 | 已验证 2026-10-26 |
+| PyPI 包 cadgen 最新版 0.8.1 已核对 | 已核对 2026-10-28 |
 | 本机未安装 uv，未实际运行 cadgen | 已核对 2026-10-26 |
 | MCP 服务握手与工具列表（initialize / tools/list） | 已验证 2026-10-26 |
 | 非目标宿主调用被拦截（HOST_NOT_ALLOWED） | 已验证 2026-10-26 |
@@ -91,7 +91,7 @@ echo "安装完成：在百度搭子里注册 MCP，command 用 uvx --from cadge
 
 text-to-cad 的核心就是 `cadgen mcp` 这个本地 MCP server；百度搭子可直接注册。本仓库的 MCP 只提供安装与常见坑。
 
-本仓库自带一个零依赖的 MCP server（`mcp-server.mjs`），读取同目录的 `guide.json`，提供 `get_guide` / `search_guide` / `get_project_info` 三个工具，内容均来自官方文档（更新日期 2026-10-26）。
+本仓库自带一个零依赖的 MCP server（`mcp-server.mjs`），读取同目录的 `guide.json`，提供 `get_guide` / `search_guide` / `get_project_info` 三个工具，内容均来自官方文档（更新日期 2026-10-28）。
 
 **在百度搭子里接入**：客户端不扫描仓库里的配置文件，需要由百度搭子通过工作区的 MCP 注册接口注册，并且必须使用**绝对路径**（运行时的工作目录是会话目录，不是仓库目录）：
 
@@ -117,7 +117,7 @@ text-to-cad 的核心就是 `cadgen mcp` 这个本地 MCP server；百度搭子�
 ```json
 {
   "type": "local",
-  "command": ["uvx", "--from", "cadgen==0.7.26", "cadgen", "mcp"]
+  "command": ["uvx", "--from", "cadgen==0.8.1", "cadgen", "mcp"]
 }
 ```
 
@@ -131,7 +131,7 @@ text-to-cad 的核心就是 `cadgen mcp` 这个本地 MCP server；百度搭子�
 ### 关闭统计
 
 ```sh
-uvx --from cadgen==0.7.26 cadgen telemetry off
+uvx --from cadgen==0.8.1 cadgen telemetry off
 ```
 
 ### Windows 注意
@@ -143,15 +143,15 @@ uvx --from cadgen==0.7.26 cadgen telemetry off
 ## 常见坑
 
 - `uv` 找不到：先装 uv，再重开终端让 PATH 生效
-- MCP 起不来：用 `uvx --from cadgen==0.7.26 cadgen mcp` 完整命令排查
+- MCP 起不来：用 `uvx --from cadgen==0.8.1 cadgen mcp` 完整命令排查
 - 首次很慢：要下载 CAD 运行时，不是卡死
 - Windows OCP DLL 报错：安装 VC++ 运行库
 - 模型尺寸不对：描述里给明确单位与关键尺寸，别只说「大一点」
-- 不想上报统计：`uvx --from cadgen==0.7.26 cadgen telemetry off`
+- 不想上报统计：`uvx --from cadgen==0.8.1 cadgen telemetry off`
 - 别直接上机床：生成结果必须人工复核
 
 ## 免责声明
 
 本仓库为第三方指南，与 text-to-cad 官方无隶属关系，不代表官方立场。
-教程基于官方文档编写（更新日期：2026-10-26），项目迭代快，请以[官方文档](https://github.com/earthtojake/text-to-cad#-install)为准。
+教程基于官方文档编写（更新日期：2026-10-28），项目迭代快，请以[官方文档](https://github.com/earthtojake/text-to-cad#-install)为准。
 因使用本教程产生的部署问题，请先在官方仓库的 issue 中检索。
